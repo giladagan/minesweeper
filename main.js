@@ -94,10 +94,7 @@ function cellClicked(elCell, i, j) {
   gBoard[i][j].isShown = true;
   gGame.shownCount++;
   elCell.innerHTML = gBoard[i][j].isMine ? MINE : gBoard[i][j].minesAroundCount; // if isMine is true , the print gonna be the MINE , if isMine false print gonna be the minescount
-  
-  if (elCell.innerHTML = gBoard[i][j].minesAroundCount > 0){
-    
-  } 
+
   if (gBoard[i][j].isMine) {
     //  if the cell contains the mine, give that cell a background color of red and finish the game.
     elCell.style.backgroundColor = "red";
