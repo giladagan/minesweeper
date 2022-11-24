@@ -1,10 +1,10 @@
 //* GETS AN EMPTY GLOBAL VAR OF GNUMS AND BUILDS IT ACCORDING TO THE GNUMSRANGE LENGTH
-function resetMines() {
-  gMines = [];
-  for (var i = 0; i < gNumsRange; i++) {
-    gMines.push(i + 1);
-  }
-}
+// function resetMines() {
+//   gMines = [];
+//   for (var i = 0; i < gNums; i++) {
+//     gMines.push(i + 1);
+//   }
+// }
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //* DRAWS A RANDOM NUMBER FROM GNUMS ARRAY AND SPLICES THAT NUM SO IT WONT REPEAT ITSELF
 function drawNum() {
@@ -156,7 +156,6 @@ function countFoodAround(board) {
       if (i === rowIdx && j === colIdx) continue;
       if (j < 0 || j >= board[0].length) continue;
       var currCell = board[i][j];
-      
     }
   }
 }

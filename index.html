@@ -15,14 +15,18 @@
       </div>
       <div class="level l2" id="8" onclick="changeGameDiff(this)">Medium</div>
       <div class="level l3" id="12" onclick="changeGameDiff(this)">Expret</div>
-      <output class="timer" id="display-area">00:00</output>
     </div>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <div class="board-container"></div>
+    <div class="stopwatch">
+      <div class="circle">
+        <output class="timer" id="display-area">00:00</output>
+      </div>
+<span onclick="initGame()" class="mode" style="font-size:40px">😀</span>
+    <div class="container">
+      <div class="board-container"></div>
+    </div>
   </body>
   <script src="util.js"></script>
   <script src="timer.js"></script>
+  <script src="mines.js"></script>
   <script src="main.js"></script>
 </html>
