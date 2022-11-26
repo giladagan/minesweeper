@@ -1,46 +1,40 @@
 "use strict";
 
-var timeBegan = null,
-  timeStopped = null,
-  stoppedDuration = 0,
-  started = null;
+const elTime = document.querySelector(".stopwatch .timer");
 
-/////////////////////////////////////////////////
+let seconds = 0;
+let interval = null;
 
-// THE TIMER FUNCTION
+// Update the timer
+function timer() {
+  seconds++;
 
-function start() {
-  // we initialize the time Began with new Date
-  if (timeBegan === null) {
-    timeBegan = new Date();
-  }
-  // if timeStopped is truthy , we take the stopped duration and add the new date and the we cut the timeStopped .
-  if (timeStopped !== null) {
-    stoppedDuration += new Date() - timeStopped;
-  }
+  // Format our time
+  let hrs = Math.floor(seconds / 3600);
+  let mins = Math.floor((seconds - hrs * 3600) / 60);
+  let secs = seconds % 60;
 
-  // started stores  the ID of the interval, in order to stop the timer we have to clear 'started'
-  started = setInterval(clockRunning, 10);
+  if (secs < 10) secs = "0" + secs;
+  if (mins < 10) mins = "0" + mins;
+
+  elTime.innerText = `${mins}:${secs}`;
 }
 
-function reset() {
-  clearInterval(started);
-  stoppedDuration = 0;
-  timeBegan = null;
-  timeStopped = null;
-  document.getElementById("display-area").innerHTML = "00:00";
+function start() {
+  if (interval) {
+    return;
+  }
+
+  interval = setInterval(timer, 1000);
 }
 
 function stop() {
-  timeStopped = new Date();
-  clearInterval(started);
+  clearInterval(interval);
+  interval = null;
 }
 
-function clockRunning() {
-  var currentTime = new Date(),
-    timeElapsed = new Date(currentTime - timeBegan - stoppedDuration),
-    min = timeElapsed.getUTCMinutes(),
-    sec = timeElapsed.getUTCSeconds();
-  document.getElementById("display-area").innerHTML =
-    (min > 9 ? min : "0" + min) + ":" + (sec > 9 ? sec : "0" + sec);
+function reset() {
+  stop();
+  seconds = 0;
+  elTime.innerText = "00:00";
 }
